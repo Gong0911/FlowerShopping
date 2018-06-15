@@ -1,0 +1,203 @@
+﻿@using FlowerShopping.Models
+@model FlowerShopping.ModelView.ProductViewModel
+@{
+    ViewBag.Title = "Flowers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/productDetail.css")
+@Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+@Scripts.Render("~/Scripts/common.js")
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+<div id="detail">
+    <div class="detailMenu">
+@using (Html.BeginForm("AddToCart", "Product", FormMethod.Post, new { id = "addtoCart" }))
+{
+        <div id="showbox">
+            <img src="@Model.Products.ProductImg" width="400" height="400"/>    
+        </div>
+        <div class="proInfo">
+            <div class="proName">
+                <p>@Model.Products.ProductName</p>
+            </div>
+            <div class="proList">
+                <p class="proPrice">售价：<em>￥</em><span>@Model.Products.ProductPrice</span></p>
+                <input type="hidden" name="price" value="@Model.Products.ProductPrice" />
+                <p class="proMean">
+                   花语：<span>@(Model.Products.ProductFlorid.Length > 45 ? Model.Products.ProductFlorid.Substring(0,45):Model.Products.ProductFlorid)</span>                  
+                </p>
+                <p class="proSale">销量：<span>@Model.Products.SalesNumber</span></p>
+                <p class="proTime">上架时间：<span>@Model.Products.AddTime</span></p>
+            </div>     
+            <div class="proNum">
+                <p class="numTitle">数量</p>
+                <div class="numSub"><img src="~/Images/detail/subImg.png"></div>
+                <form>
+                    <input class="input" value="1" type="text" name="number">
+                </form>
+                <div class="numAdd"><img src="~/Images/detail/addImg.png"></div>
+            </div>    
+
+            @* 加入购物车  立即购买 *@
+      
+            <div class="Buy_Cart">
+
+                <div class="Buy">
+                    <a href="#">立即购买</a>
+                </div>
+
+                <div class="Cart">
+                    @if (Session["UserName"] != null)
+                    {
+                        <input type="hidden" name="proid" value="@Model.Products.ProductID" />
+                        <img src="~/Images/detail/cart.png" class="cartImg" />
+                         <a href="javascript:document.getElementById('addtoCart').submit()">添加购物车</a>
+
+                    }
+                    else
+                    {
+                        <a href="javascript:;" id="example1" onclick="confirm('请先登录')?location.href='@Url.Action("Login","Register")':''"><img src="~/Images/detail/cart.png" />添加购物车</a>
+                    }
+
+                </div>
+            </div>
+       
+
+        </div>
+         }
+    </div>
+
+    @* 详情  评论  热销排行部分 *@
+    <div class="detailList">
+        @* 热销排行 *@
+        @{ Html.RenderAction("ProductHotList", "Product");}
+
+        @* 详情 评论 *@
+        <div class="proComment">
+           <div class="select_btn">
+               <ul>
+                   <li class="add_class">商品详情</li>
+                   <li>买家评价</li>
+               </ul>
+           </div>
+            <div class="select_con">
+                <div class="conBlock" style="display:block;background:#f8f5dd;width:940px;height:500px;"></div>
+                <div class="conBlock">
+                  
+                    <div class="sendComm">
+                        <div class="commImg">
+                            @if (Session["UserName"] != null)
+                            {
+                                <img src="@Session["UeserImg"]" height="50" width="50">
+                            }
+                            else
+                            {
+                                <img src="~/Images/detail/head.jpg" height="50" width="50" />
+                            }
+                           
+                        </div>
+
+                        <div class="commArea">
+                            @using (Html.BeginForm("ProductComments", "Product", FormMethod.Post, new { id = "btnComment" }))
+
+                            {
+                                <div class="commTxt">
+                                    <textarea class="textarea" name="pingluntextarea"></textarea>
+                                </div>
+
+                                <input type="hidden" name="proid" value="@Model.Products.ProductID" />
+                                if (Session["UserName"] != null)
+                                {                                
+
+                                    <div class="commSendBtn">
+                                        <input type="submit" value="发表评论" class="commButton" id="btnComment" />
+                                    </div>
+                                }
+
+                                else
+                                {                                
+                                    <div class="commSendBtn">
+                                        <input type="button" value="发表评论" class="commButton" onclick="alert('对不起，未登录不能评论！')" />
+                                    </div>
+                                }
+                            }
+                        </div>
+
+                    </div>
+
+                    <div class="allComm">
+                        <div class="allCommTitle">
+                            <p>全部评论</p>
+                        </div>
+
+                        <div class="allCommCon">
+                            <ul>
+                               @foreach (Comment p in Model.productComm)
+                               {
+                                <li>
+                                    <div class="userheadImg">
+                                        <img src="@p.UserInfo.UeserImg" width="45" height="45" />
+                                    </div>
+                                    <div class="commDetails">
+                                        <p class="comm_name">@p.UserInfo.UserName</p>
+                                        <p class="comm_content">@p.CommContent</p>
+                                        <p class="comm_time">发表于：@p.CommentTime</p>
+                                    </div>
+                                </li>
+                               }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+   //数量点击增加 减少
+    $(function () {
+       
+        $(".numAdd").click(function(){
+            var value=parseInt($(".input").val())+1;
+            $(".input").val(value);
+        });
+
+        $(".numSub").click(function(){
+            var num=$(".input").val()
+            if(num>1){
+                $(".input").val(num-1);
+            }
+        });
+    });
+
+
+    //详情 评论 点击切换
+    $(function () {
+        $(".select_btn ul li").click(function () {
+            $(this).addClass("add_class").siblings().removeClass("add_class");
+            var _index = $(this).index();
+            $(".select_con .conBlock").eq(_index).show().siblings().hide();
+        });
+    });
+
+</script>
+
+<script src="~/Scripts/jquery-1.9.1.min.js"></script>
+<script src="~/Scripts/common.js"></script>
+@* 放大镜效果 *@
+<script type="text/javascript">
+  $(document).ready(function(){
+	  var showproduct = {
+	      "boxid": "showbox",
+		  "boxw":400,//宽度,该版本中请把宽高填写成一样
+		  "boxh":400,//高度,该版本中请把宽高填写成一样
+		  "sumsel":"sel",
+		  "sumborder":1,//列表边框，没有边框填写0，边框在css中修改
+		  };//参数定义
+	 $.ljsGlasses.pcGlasses(showproduct);//方法调用，务必在加载完后执行
+  });
+</script>

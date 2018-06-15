@@ -1,0 +1,370 @@
+﻿#detail{
+    width:1200px;
+    /*height:2400px;*/
+    /*border:1px solid #ccc;*/
+    margin:50px auto;
+}
+#detail .detailMenu{
+    width:1200px;
+    height:500px;
+    border-bottom:2px dashed #cccccc;
+}
+/*商品图片*/
+#showbox{
+    width:400px;
+    height:400px;
+    /*background:#00ff90;*/
+    float:left;
+    border:1px solid #ccc;
+    z-index:1;
+}
+#showbox span{ 
+    background:url("../Images/detail/whitebg.png") repeat;
+}
+
+#detail .detailMenu .proInfo{
+    width:700px;
+    height:800px;
+    /*background:#f7e577;*/
+    float:right;
+}
+/*商品名*/
+#detail .detailMenu .proInfo .proName{
+    width:700px;
+    height:70px;
+    /*background:#2bf3d5;*/
+    font-family:微软雅黑;
+    font-size:24px;
+    color:#000;
+    line-height:70px;
+}
+
+/*灰色方框样式*/
+#detail .detailMenu .proInfo .proList{
+    width:700px;
+    height:180px;
+    background:#f5f3ef;
+    text-indent:15px;
+    border-radius:6px;
+}
+/*价格*/
+#detail .detailMenu .proInfo .proList p.proPrice{
+    width:500px;
+    height:50px;
+    line-height:50px;
+    font-size:14px;
+    color:#605f5f;
+}
+#detail .detailMenu .proInfo .proList p.proPrice em{
+    color:#ff3366;
+    font-size:22px;
+    font-weight:bold;
+}
+#detail .detailMenu .proInfo .proList p.proPrice span{
+    color:#ff3366;
+    font-weight:bold;
+    font-family:微软雅黑;
+    font-size:22px;
+}
+/*花语*/
+#detail .detailMenu .proInfo .proList p.proMean{
+    width:700px;
+    height:40px;
+    /*background:#fbe8a9;*/
+    font-size:14px;
+    color:#605f5f;
+    line-height:40px;
+}
+#detail .detailMenu .proInfo .proList p.proMean span{
+    color:#100f0f;
+
+}
+/*销量*/
+#detail .detailMenu .proInfo .proList p.proSale{
+    width:500px;
+    height:40px;
+    line-height:40px;
+    font-size:14px;
+    color:#605f5f;
+}
+#detail .detailMenu .proInfo .proList p.proSale span{
+    font-size:16px;
+    font-family:微软雅黑;
+    color:#ff3366;
+}
+/*上架时间*/
+#detail .detailMenu .proInfo .proList p.proTime{
+    width:500px;
+    height:40px;
+    /*background:#ff3366;*/
+    line-height:40px;
+    font-size:14px;
+    color:#605f5f;
+}
+#detail .detailMenu .proInfo .proList p.proTime span{
+    font-size:16px;
+    font-family:微软雅黑;
+    color:#000;
+}
+/*数量*/
+#detail .detailMenu .proInfo .proNum{
+    width: 554px;
+	height: 100px;
+    /*background:#f7c332;*/
+	overflow: hidden;
+}
+#detail .detailMenu .proInfo .proNum .numTitle{
+    font-family: "微软雅黑";
+	font-size: 16px;
+	color: #605f5f;
+	line-height: 100px;
+    text-indent:15px;
+    float:left;
+}
+#detail .detailMenu .proInfo .proNum .numSub{
+    float:left;
+    margin-top: 34px;
+	margin-left: 30px;
+}
+#detail .detailMenu .proInfo .proNum .numAdd{
+    float:left;
+    margin-top: 34px;
+}
+#detail .detailMenu .proInfo .proNum input{
+    height: 30px;
+	width: 60px;
+	margin-top: 34px;
+	border: 1px solid #dddddd;
+	line-height: 30px;
+	text-align: center;
+	float: left;
+}
+/*加入购物车 立即购买*/
+#detail .detailMenu .proInfo .Buy_Cart{
+    width:700px;
+    height:100px;
+    /*background:#78ebdd;*/
+    clear:both;
+    text-align:center;
+    position:relative;
+ 
+}
+#detail .detailMenu .proInfo .Buy_Cart .Buy{
+    position:absolute;
+    top:40px;
+    left:20px;
+    width:120px;
+    height:30px;
+    line-height:30px;
+    border:2px solid #ff3366; 
+}
+#detail .detailMenu .proInfo .Buy_Cart .Buy a{
+    display:block;
+    width:120px;
+    height:30px;
+    color:#ff3366;
+    cursor:pointer;
+}
+#detail .detailMenu .proInfo .Buy_Cart .Buy a:hover{
+    color:#fff;
+    background:#ff3366;
+    cursor:pointer;
+}
+#detail .detailMenu .proInfo .Buy_Cart .Cart{
+    position:absolute;
+    top:40px;
+    left:170px;
+    width:125px;
+    height:34px;
+    line-height:34px;
+    background:#ff3366;
+}
+
+#detail .detailMenu .proInfo .Buy_Cart .Cart a{
+    width:125px;
+    height:34px;
+    line-height:34px;
+    color:#ffffff;
+    cursor:pointer;
+}
+#detail .detailMenu .proInfo .Buy_Cart .Cart img.cartImg{
+    width:22px;
+    height:22px;
+    padding:6px 4px 0px 2px;
+}
+#detail .detailMenu .proInfo .Buy_Cart .Cart a img{
+    width:22px;
+    height:22px;
+    padding:6px 4px 0px 2px;
+}
+
+#detail .detailMenu .proInfo .Buy_Cart .Cart:hover{
+    color:#fff;
+    background:#666;
+}
+
+/*热销  详情  评论*/
+#detail .detailList{
+    position:relative;
+    width:1200px;
+    /*height:1500px;
+    background:#ff3366;*/
+    margin-top:40px;
+}
+
+/*详情 评论*/
+.detailList .proComment{
+    position:absolute;
+    right:0;
+    top:0;
+    width:950px;
+    /*height:1000px;*/
+    /*background:#f3a961;*/
+    border:1px solid #cccccc;
+    
+}
+/*点击切换*/
+.detailList .proComment .select_btn{
+     width: 940px;
+     height: 45px;
+     /*background: #f1ff7b;*/
+     margin:0 auto;
+}
+.detailList .proComment .select_btn ul li{
+     width: 150px;
+     height: 45px;
+     float: left;
+     line-height: 45px;
+     font-size: 16px;
+     text-align: center;
+     font-family: "微软雅黑";
+   
+}
+/*添加切换样式*/
+.detailList .proComment .select_btn ul li.add_class{
+     color: #ff3366;
+     font-size: 17px;
+     border-bottom: 2px solid #ff3366;
+}
+
+/*切换的div*/
+.detailList .proComment .select_con{
+    width:940px;
+    margin:10px auto;
+}
+.detailList .proComment .select_con .conBlock{
+    width:940px;
+    display:none;
+}
+
+/*发表评论*/
+.proComment .select_con .conBlock .sendComm{
+    width:940px;
+    height:160px;
+    /*background:#f7df50;*/
+}
+/*头像*/
+.proComment .select_con .conBlock .sendComm .commImg{
+    width:60px;
+    height:60px;
+    float:left;
+    overflow:hidden;
+    margin-top:50px;
+    margin-left:5px;
+}
+/*评论区域*/
+.proComment .select_con .conBlock .sendComm .commArea{
+    width:870px;
+    height:80px;
+    float:right;
+    background:blue;
+    margin-top:50px;
+}
+/*评论文本*/
+.proComment .select_con .conBlock .sendComm .commArea .commTxt{
+    width:738px;
+    height:80px;
+    float:left;
+}
+.select_con .conBlock .sendComm .commArea .commTxt .textarea{
+    width:738px;
+    height:80px;
+    text-indent:5px;
+    font-size:16px;
+    color:#000;
+    font-family:微软雅黑;
+}
+.select_con .conBlock .sendComm .commArea .commSendBtn input{
+    width:130px;
+    height:80px;
+    background:#666;
+    color:#ffffff;
+    font-size:16px;
+    font-family:微软雅黑;
+    border:none;
+    float:right;
+}
+.select_con .conBlock .sendComm .commArea .commSendBtn input:hover{
+    background:#ff3366;
+    cursor:pointer;
+}
+
+/*全部评论*/
+/*.proComment .select_con .conBlock .allComm{
+    width:940px;
+    background:#31fbb7;
+}*/
+.proComment .select_con .conBlock .allComm .allCommTitle{
+    width:940px;
+    height:35px;
+    line-height:35px;
+    border-bottom:1px dashed #cccccc;
+    font-size:14px;
+    text-indent:5px;
+}
+.proComment .select_con .conBlock .allComm .allCommCon{
+    width:940px;
+    height:400px;
+    /*background:#6aa7f2;*/
+    margin-top:5px;
+}
+
+.proComment .select_con .conBlock .allComm .allCommCon ul li{
+    width:940px;
+    height:120px;
+    border-bottom:1px dotted #ccc;
+}
+.proComment .select_con  .conBlock .allComm .allCommCon ul li img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    float:left;
+    margin-left:5px;
+    margin-top:10px;
+}
+.proComment .select_con  .conBlock .allComm .allCommCon ul li .commDetails{
+    width:875px;
+    height:120px;
+    float:right;
+    font-family:微软雅黑;
+}
+.select_con  .conBlock .allComm .allCommCon ul li .commDetails p.comm_name{
+    width:875px;
+    height:30px;
+    line-height:30px;
+    font-size:14px;
+    color:#ff3366;
+    margin-top:5px;
+}
+.select_con  .conBlock .allComm .allCommCon ul li .commDetails p.comm_content{
+    width:875px;
+    height:60px;
+    overflow:hidden;
+    font-size:14px;
+    /*background:#24d071;*/
+}
+.select_con  .conBlock .allComm .allCommCon ul li .commDetails p.comm_time{
+    width:875px;
+    font-size:12px;
+    color:#605f5f;
+}

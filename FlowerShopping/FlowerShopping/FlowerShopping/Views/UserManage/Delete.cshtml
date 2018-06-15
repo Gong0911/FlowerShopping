@@ -1,0 +1,72 @@
+﻿@model FlowerShopping.Models.UserInfo
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Delete";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <div style="width:1000px;position:absolute;top:150px;left:200px;">
+        <h4>删除用户</h4>
+        <hr />
+        <dl class="dl-horizontal" >
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UserPwd)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UserPwd)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UserPhone)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UserPhone)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UeserImg)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UeserImg)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreateTime)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreateTime)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm("Delete", "UserManage", FormMethod.Post)) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="删除" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

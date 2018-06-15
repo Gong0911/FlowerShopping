@@ -1,0 +1,167 @@
+﻿
+@model FlowerShopping.ModelView.HomeViewModel
+@{
+    ViewBag.Title = "Flowers";
+}
+@Styles.Render("~/Content/index.css")
+@Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+
+@* 轮播开始 *@
+<div id="banner">
+    <!--图片列表开始-->
+    <div class="Con">
+        <div class="box" style="background:url('../../Images/banner/banner2.jpg') center;z-index:222;width:100%;height:400px"></div>
+        <div class="box" style="background:url('../../Images/banner/banner1.jpg') center;width:100%;height:400px"></div>
+        <div class="box" style="background:url('../../Images/banner/banner3.jpg') center;width:100%;height:400px"></div>
+        <div class="box" style="background:url('../../Images/banner/banner4.jpg') center;"></div>
+    </div>
+    <!--图片列表结束-->
+    <!--按扭开始-->
+    <ul class="button">
+        <li class="hover"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <!--按扭结束-->
+</div>
+
+
+<div id="mainBox">
+    @* 新品上架 *@
+    <div class="newBox">
+            <div class="new_title">
+                <h3>新品上架</h3>
+            </div>
+            <div class="new_list">
+                <ul>
+                    @foreach (var item in Model.productNew)
+                    {
+                        <li>
+                            <p class="list_img">
+                                <a href="@Url.Action("ProductDetail","Product",new { id=item.ProductID})"><img src="@item.ProductImg" /></a>
+                            </p>
+                            <p class="list_name"><a href="@Url.Action("ProductDetail","Product",new { id=item.ProductID})">@item.ProductName</a></p>
+                            <p class="list_price"><span>￥</span>@item.ProductPrice</p>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+    @* 热销单品 *@
+    <div class="hotBox">
+        <div class="hot_title">
+            <h3>热销单品</h3>
+        </div>
+        <div class="hot_list">
+            <ul>
+              @foreach (var item in Model.productHot)
+              {
+                <li>
+                    <p class="list_img">
+                        <a href="@Url.Action("ProductDetail","Product",new { id=item.ProductID})"><img src="@item.ProductImg" /></a>
+                    </p>
+                    <p class="list_name"><a href="@Url.Action("ProductDetail","Product",new { id=item.ProductID})">@item.ProductName</a></p>
+                    <p class="list_price"><span>￥</span>@item.ProductPrice</p>
+                </li>
+              }
+             
+            </ul>
+        </div>
+    </div>
+   
+    @* 鲜花花材 *@
+    <div class="typeBox">
+        <div class="type_title">
+            <h3>鲜花花材</h3>
+        </div>
+        <div class="type_list">
+            <img src="~/Images/home/left.png" class="img_l">
+            <img src="~/Images/home/right.png" class="img_r">
+            <div class="scroll">
+                <div class="imgList">
+                    <dl>
+                        <dt><img src="~/Images/type/f1.jpg"></dt>
+                        <dd>玫瑰</dd>
+                    </dl>
+                    <dl>
+                        <dt><img src="~/Images/type/f2.jpg"></dt>
+                        <dd>百合</dd>
+                        
+                    </dl>
+                    <dl>
+                        <dt><img src="~/Images/type/f3.jpg"></dt>
+                        <dd>康乃馨</dd>
+                        
+                    </dl>
+                    <dl>
+                        <dt><img src="~/Images/type/f4.jpg" ></dt>
+                        <dd>向日葵</dd>
+                        
+                    </dl>
+                   <dl>
+                        <dt><img src="~/Images/type/f5.jpg"></dt>
+                        <dd>郁金香</dd>
+                       
+                    </dl>
+                     <dl>
+                        <dt><img src="~/Images/type/f6.jpg"></dt>
+                        <dd>马蹄莲</dd>
+                      
+                    </dl>
+                    <dl>
+                        <dt><img src="~/Images/type/f7.jpg"></dt>
+                        <dd>扶郎</dd>
+                       
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    //给产品鼠标移入时添加样式
+    $(function () {
+        $(".new_list li").hover(function () {
+            $(this).addClass("active");
+        }, function () {
+            $(this).removeClass("active");
+        });
+
+
+        $(".hot_list li").hover(function () {
+            $(this).addClass("hover");
+        }, function () {
+            $(this).removeClass("hover");
+        });
+              
+    })
+
+    //点击左右箭头切换图片
+    $(function () {
+        var click_num = 0;
+        $("img.img_l").click(function () {
+            click_num++;
+            if (click_num <= 2) {
+                $(".scroll .imgList").animate({ left: "-" + click_num * 216 + "px" }, 500);
+            }
+            else {
+                click_num = 2;
+            }
+        });
+
+        $("img.img_r").click(function () {
+            click_num--;
+            if (click_num >= 0) {
+                $(".scroll .imgList").animate({ left: "-" + click_num * 216 + "px" }, 500);
+            }
+            else {
+                click_num = 0;
+            }
+        });
+    });
+</script>

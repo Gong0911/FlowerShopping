@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0301b22a9c0a46f4ba8dd8efcb324646" Name="Diagram1">
+        <EntityTypeShape EntityType="FlowersModel.Admin" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersModel.BigType" Width="1.5" PointX="1.5" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersModel.Cart" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersModel.Comment" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersModel.Order" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersModel.OrderDetails" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersModel.Product" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersModel.SmallType" Width="1.5" PointX="1.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FlowersModel.UserInfo" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="FlowersModel.FK_SmallType_BigType" ManuallyRouted="false" />
+        <AssociationConnector Association="FlowersModel.FK_Cart_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FlowersModel.FK_Cart_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="FlowersModel.FK_Comment_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="FlowersModel.FK_Order_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="FlowersModel.FK_OrderDetails_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="FlowersModel.FK_OrderDetails_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FlowersModel.FK_Product_SmallType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

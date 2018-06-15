@@ -1,0 +1,342 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 网上花店</title>
+    <!-- Favicon  -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico">
+    @Styles.Render("~/Content/layout.css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+  
+</head>
+<body>
+    <header id="head">
+        <div class="top">
+            <div class="top_content">
+                <div class="welcome">
+                    <p>您好！欢迎来到网上花店 </p>
+                </div>
+                <div class="menu">
+                    @if (Session["UserName"] != null)
+                    {
+                        using (Html.BeginForm("LoginOut", "Register", FormMethod.Post, new { id = "LoginOutBox" }))
+                        {
+                            @*@Html.AntiForgeryToken()*@
+                            <div class="loginOut">
+                                <a href="@Url.Content("~/Home/Index")" class="img_a"><img src="@Session["UeserImg"]" class="imglink"/></a>
+                                <a href="#" class="user_name">@Session["UserName"]</a>
+                                <a href="javascript:document.getElementById('LoginOutBox').submit()">[注销]</a>
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABPUlEQVQ4T7VUwVGEQBDsPkrfhmAGUpjAhXAZyMO9N2ZwIfC0wAdmcEZwGADUhmAI/C12rF1EKA9uT4ubF7Xb1dOz3QyxcHFhPlyOUCJV/qg1nxvqovmP+iOFEm13MKakfindNyBeYiNv1Lm2uAlCFbuLOi8kfFx7ySxgxR3r3GGPCS3JarVmnVl1Z5VEW806C2cI4xsE1ymrzCn1lYQqRMCkx0+6bA3qR/ASRioFWbLK9pMK7eHfCIdxTxICPPjUgQgheGedpT12ZmQXlwbGuCjMF5s+Lj7CpIvO0Nmr9hswrTDsnIbIrZfIBDH188dJhf2lOAdxhxZP49EkUjGIBwhe7Q8wbjq7HMSpvCrQBgmCNmWVb4ZGnbNyr/bj81mXRwq7hUHaoLucdbFyptkGxe93vtz68j7+mYDFFX4BGXuAFT1xeUcAAAAASUVORK5CYII=" /><a href="@Url.Action("Index","Cart",new { UserID=Session["UsersId"]})">购物车</a>
+                            </div>
+                        }
+
+                    }
+                    else
+                    {
+                        <div class="loginClick">
+                            <a href="@Url.Content("~/Register/Login")" class="click">登录</a><span>|</span><a href="@Url.Content("~/Register/Register")">注册</a>
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABPUlEQVQ4T7VUwVGEQBDsPkrfhmAGUpjAhXAZyMO9N2ZwIfC0wAdmcEZwGADUhmAI/C12rF1EKA9uT4ubF7Xb1dOz3QyxcHFhPlyOUCJV/qg1nxvqovmP+iOFEm13MKakfindNyBeYiNv1Lm2uAlCFbuLOi8kfFx7ySxgxR3r3GGPCS3JarVmnVl1Z5VEW806C2cI4xsE1ymrzCn1lYQqRMCkx0+6bA3qR/ASRioFWbLK9pMK7eHfCIdxTxICPPjUgQgheGedpT12ZmQXlwbGuCjMF5s+Lj7CpIvO0Nmr9hswrTDsnIbIrZfIBDH188dJhf2lOAdxhxZP49EkUjGIBwhe7Q8wbjq7HMSpvCrQBgmCNmWVb4ZGnbNyr/bj81mXRwq7hUHaoLucdbFyptkGxe93vtz68j7+mYDFFX4BGXuAFT1xeUcAAAAASUVORK5CYII=" /><a href="javascript:;" onclick="confirm('请先登录')?location.href='@Url.Action("Login","Register")':''">购物车</a>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="logo">
+            <div class="logoImg">
+                <a href="@Url.Content("~/Home/Index")"><img src="~/Images/home/logo.png" /></a>
+            </div>
+            <div class="search">
+                <p class="searchBox"><input type="search" placeholder="请输入您想要的鲜花,如：玫瑰、康乃馨..." /></p>
+                <p class="searchBtn"><input  type="button" value="搜索"/></p>
+            </div>
+            <div class="telphone">
+                <img src="~/Images/home/telphone.png" title="客服热线" />
+                <p>300-123-4567</p>
+            </div>
+            <div class="qq">
+                <img src="~/Images/home/qq.png" alt="客服QQ" title="客服QQ" />
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=571477540&site=qq&menu=yes" target="_blank">在线客服QQ</a>
+            </div>
+        </div>
+        <div class="nav">
+            <ul>
+                <li class="hover"><a href="@Url.Content("~/Home/Index")">首页<span>HOME</span></a> </li>
+                <li>
+                    <a href="#">鲜花<span>FLOWERS</span></a>
+                    <div class="menu">
+                     
+                           <div class="list">
+                               <dl>
+                                   <dt>按对象订花</dt>
+                                   <dd>
+                                       <a href="">恋人</a> <a href="">朋友</a> <a href="">父母</a> <a href="">领导</a> <a href="">老师</a>
+                                       <a href="">客户</a> <a href="">长辈</a> <a href="">病人</a>
+                                   </dd>
+                               </dl>
+                           </div>
+                           <div class="list">
+                               <dl>
+                                   <dt>按花材订花</dt>
+                                   <dd>
+                                       <a href="">玫瑰</a> <a href="">百合</a> <a href="">康乃馨</a> <a href="">向日葵</a> <a href="">郁金香</a>
+                                       <a href="">马蹄莲</a> <a href="">扶郎</a>
+                                   </dd>
+                               </dl>
+                           </div>
+                           <div class="list">
+                               <dl>
+                                   <dt>按用途订花</dt>
+                                   <dd>
+                                       <a href="">爱情鲜花</a> <a href="">生日鲜花</a> <a href="">友情鲜花</a> <a href="">祝福庆贺</a> <a href="">道歉鲜花</a>
+                                   </dd>
+                                   <dd>
+                                       <a href="">婚庆鲜花</a> <a href="">商务鲜花</a>
+                                   </dd>
+                               </dl>
+                           </div>
+                       
+                    </div>
+                </li>
+                <li><a href="#">花语大全<span>FLORID</span></a> </li>
+                <li><a href="#">购花流程<span>PROCESS</span></a></li>
+                <li>
+                    <a href="#">个人中心<span>PERSONAL</span></a>
+                </li>
+                <li><a href="#">关于我们<span>ABOUT US</span></a> </li>
+                <li>
+                    <a href="#">联系我们<span>CONTACT US</span></a>
+                  
+                </li>
+            </ul>
+        </div>
+    </header>
+    
+
+    <div class="content">
+        @RenderBody()
+    </div>
+    @* 底部 *@
+
+    <footer class="center">
+        <!-- Footer -->
+           <div class="b_btm_bg b_btm_c">
+               <ul class="b_btm">
+                   <li>
+                       <a><img src="~/Images/footer/b1.png" width="62" height="62" /></a>
+                       <div><h2>正品保障</h2>正品行货 放心购买</div>
+                   </li>
+                   <li>
+                       <a><img src="~/Images/footer/b2.png" height="62" /></a>
+                       <div><h2>满88包邮</h2>满88包邮 免运费</div>
+                   </li>
+                   <li>
+                       <a><img src="~/Images/footer/b3.png" width="62" height="62" /></a>
+                       <div><h2>天天低价</h2>天天低价 畅选无忧</div>
+                   </li>
+                   <li>
+                       <a><img src="~/Images/footer/b4.png" width="62" height="62" /></a>
+                       <div><h2>准时送达</h2>收货时间由你做主</div>
+                   </li>
+               </ul>
+           </div>
+           <div class="b_nav">
+               <dl> 
+                   <dt><a href="#">新手上路</a></dt>
+                   <dd><a href="#">售后流程</a></dd>
+                   <dd><a href="#">购物流程</a></dd>
+                   <dd><a href="#">订购方式</a></dd>
+                   <dd><a href="#">隐私声明</a></dd>
+               </dl>
+               <dl>
+                   <dt><a href="#">配送与支付</a></dt>
+                   <dd><a href="#">货到付款区域</a></dd>
+                   <dd><a href="#">配送支付查询</a></dd>
+                   <dd><a href="#">支付方式说明</a></dd>
+               </dl>
+               <dl>
+                   <dt><a href="#">会员中心</a></dt>
+                   <dd><a href="#">资金管理</a></dd>
+                   <dd><a href="#">我的收藏</a></dd>
+                   <dd><a href="#">我的订单</a></dd>
+               </dl>
+               <dl>
+                   <dt><a href="#">服务保证</a></dt>
+                   <dd><a href="#">退换货原则</a></dd>
+                   <dd><a href="#">售后服务保证</a></dd>
+                   <dd><a href="#">产品质量保证</a></dd>
+               </dl>
+               <dl>
+                   <dt><a href="#">联系我们</a></dt>
+                   <dd><a href="#">网站故障报告</a></dd>
+                   <dd><a href="#">购物咨询</a></dd>
+                   <dd><a href="#">投诉与建议</a></dd>
+               </dl>
+               <div class="b_tel_bg">
+                   <a href="http://wpa.qq.com/msgrd?v=3&uin=571477540&site=qq&menu=yes" target="_blank" class="b_sh1">腾讯QQ</a>
+                   <a href="#" class="b_sh2">新浪微博</a>
+
+                   <p>
+                       服务热线：<br />
+                       <span>300-123-4567</span>
+                   </p>
+               </div>
+               <div class="b_er">
+                   <div class="b_er_c"><img src="~/Images/footer/weixin.jpg" /></div>
+                   <img src="~/Images/footer/ss.png" />
+               </div>
+           </div>
+       <!--Footer -->
+    </footer>
+    <div class="btmbg">
+        <div class="btm">
+            <p>Copyright&nbsp;&copy;@DateTime.Now.Year &nbsp;江西师范大学3522-2工作室.&nbsp;All Rights Reserved&nbsp;&nbsp;&nbsp;&nbsp;<a href="@Url.Content("~/Admin/AdminLogin")" target="_blank">后台管理入口</a></p>
+        </div>
+    </div>
+
+
+
+   
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.scrollBanner.js"></script>
+    <script>
+        $(function () {
+            $(".click").click(function () {
+                $("#gray").show();
+                $("#loginBox").show();
+                //改变高度  垂直居中
+                //改变宽度  垂直居中
+                change();
+            });
+
+            $("img.close").click(function () {
+                $("#gray").hide();
+                $("#loginBox").hide();
+
+            });
+
+            //当动态改变浏览器窗口是  也要水平居中
+            $(window).resize(function () {
+                change();
+            });
+
+            function change() {
+                var _top = ($(window).height() - $("#loginBox").height()) / 2;
+                var _left = ($(window).width() - $("#loginBox").width()) / 2;
+                $("#loginBox").css({ top: _top, left: _left });
+            }
+
+
+            
+        });
+
+        //导航移入改变背景颜色，展示二级菜单
+        $(function () {
+            $(".nav ul li").hover(function () {
+                //鼠标划入
+                $(this).addClass("hover").siblings().removeClass("hover");
+                $(this).find(".menu").slideDown();
+            }, function () {
+                $(this).find(".menu").slideUp();
+            })
+        });
+
+
+        //点击刷新验证码
+        function refreshCode() {
+            var verify = document.getElementById('img_validate');
+            verify.setAttribute('src', '@Url.Content("/CheckCode/GetCode?")' + Math.random());
+        }
+
+    </script>
+
+    @* 缩放 居中 拖动 *@
+    <script>
+    window.onload = function(){
+        init(document.getElementById("loginTitle"));//记得初始化
+    };
+
+    var l = 0,t=0,x=0,y=0;
+    var isOver = false;
+    var zindex = 3;
+    function init(titleDom){
+        //tm_center(divObj);//居中事件
+        /*第一种*/
+        var thisDom = titleDom;//获取当前title对象
+        var parentDom = thisDom.parentNode;//获取当前title对应的div
+        titleDom.onmousedown = function(event){//1111开始
+            var e = event || window.event;//为了兼容ie和火狐
+            x = e.clientX;//鼠标所在的x坐标
+            y = e.clientY;//鼠标所在的y坐标
+
+            l = parseInt(parentDom.offsetLeft);//距离浏览器左边的位置left
+            t = parseInt(parentDom.offsetTop);//距离浏览器顶部的位置top
+            isOver = true;//定义拖动标识,防止卡顿
+            zindex++;
+            parentDom.style.zIndex = zindex;
+            document.onmousemove = function(event){
+                if(isOver){
+                    var e = event || window.event;//为了兼容ie和火狐
+                    var newLeft = l + e.clientX - x;//新的左边距
+                    var newTop = t + e.clientY - y;//新的顶部边距
+                    parentDom.style.left = newLeft+"px";
+                    parentDom.style.top = newTop+"px";
+                }
+
+            }; //鼠标移动的事件
+            document.onmouseup = function(event){
+                if(isOver){
+                    isOver = false;//还原标识
+                }
+            };//鼠标松开的事件
+
+        };///111结束
+    };
+
+
+
+    </script>
+
+    @* 轮播图 *@
+    <script type="text/javascript">
+	var _index=0;
+	var setTime=null;
+	$("ul.button li").mouseover(function(){
+		clearInterval(setTime);//清除定时器
+		//添加 class="hover"
+		$(this).addClass("hover").siblings("li").removeClass("hover");
+		_index=$(this).index(); //获取当前序列号
+		//alert(_index);
+		$(".Con .box").eq(_index).fadeIn().siblings(".box").fadeOut();
+	});
+
+	$("ul.button li").mouseout(function(){
+			autoPlay();
+	});
+	function autoPlay(){
+
+		setTime=setInterval(function(){
+			_index++; //_index+1;
+			if(_index>3){_index=0;}
+			$("ul.button li").eq(_index).addClass("hover").siblings("li").removeClass("hover");
+			$(".Con .box").eq(_index).fadeIn().siblings(".box").fadeOut();
+
+			},2500);
+	}
+
+	autoPlay();
+    </script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

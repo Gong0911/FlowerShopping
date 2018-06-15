@@ -1,0 +1,103 @@
+﻿@model FlowerShopping.ModelView.ProductViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ProductHotList</title>
+    <link href="~/Content/reset.css" rel="stylesheet" />
+    <style type="text/css">
+        /*热销排行*/
+
+.proRanklist{
+    width:228px;
+    height:1448px;
+    float:left;
+    border:1px solid #cccccc;
+    border-top:none;
+    border-bottom:none;
+}
+.proRanklist .rankTitle{
+    width:228px;
+    height:40px;
+    text-align:center;
+    background:#ff3366;
+    line-height:40px;
+    font-size:16px;
+    font-family:微软雅黑;
+    font-weight:500;
+    color:#ffffff;
+}
+.proRanklist .rankImg{
+    width:220px;
+    margin:0 auto;
+}
+.proRanklist .rankImg li{
+    width:220px;
+    padding-top:5px;
+    border-bottom:1px solid #cccccc;
+}
+.proRanklist .rankImg .list_img{
+    width:220px;
+    height:230px;
+}
+.proRanklist .rankImg img{
+    width:220px;
+    height:230px;
+}
+.proRanklist .rankImg p.list_name{
+    width:220px;
+    height:25px;
+    /*background:#f57373;*/
+    line-height:25px;
+    text-align:center;
+
+}
+.proRanklist .rankImg p.list_name a{
+     color:#000;
+     font-size:15px;  
+     cursor:pointer;
+     font-family:微软雅黑;
+}
+.proRanklist .rankImg p.list_name a:hover{
+    color:#ff3366;
+    cursor:pointer;
+}
+.proRanklist .rankImg p.list_price{
+    width:220px;
+    height:20px;
+    color:#ff3366;
+    line-height:20px;
+    font-size:12px;
+    font-family:微软雅黑;
+    font-weight:bold;
+    text-align:center;
+}
+    </style>
+</head>
+<body>
+    <div class="proRanklist">
+        <div class="rankTitle">
+            <p class="hotTitle">热销推荐</p>
+        </div>
+        <div class="rankImg">
+            <ul>
+                @foreach (var item in Model.productHot)
+                    {
+                        <li>
+                            <p class="list_img">
+                                <a href="@Url.Action("ProductDetail","Product",new { id=item.ProductID})"><img src="@item.ProductImg" /></a>
+                            </p>
+                            <p class="list_name"><a href="@Url.Action("ProductDetail","Product",new { id=item.ProductID})">@item.ProductName</a></p>
+                            <p class="list_price"><span>￥</span>@item.ProductPrice</p>
+                        </li>
+                    }
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

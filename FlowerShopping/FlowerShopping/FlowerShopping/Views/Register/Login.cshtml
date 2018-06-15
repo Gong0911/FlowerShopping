@@ -1,0 +1,128 @@
+﻿@model FlowerShopping.Models.UserInfo
+@{
+    ViewBag.Title = "Login";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>用户注册</title>
+    @Styles.Render("~/Content/reset.css")
+    @Styles.Render("~/Content/login.css")
+</head>
+<body>
+    @*<div id="gray"></div>*@
+    <div id="loginBox">
+        <div class="loginTitle" id="loginTitle">用户登录</div>
+        <div class="login">
+            <div class="login_l">
+                @using (Html.BeginForm("Login", "Register", FormMethod.Post, new { id = "loginbox" }))
+                {
+                    <form>
+                        <p class="abc">账号</p>
+                        <p class="row">
+
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "text", placeholder = "请输入登录账号" })
+                        </p>
+                        <p class="abc">密码</p>
+                        <p class="row">
+
+                            @Html.TextBoxFor(m => m.UserPwd, new { @class = "text", placeholder = "请输入密码", type = "password" })
+                        </p>
+                        <p class="abc">验证码</p>
+                        <p class="row">
+
+                            <input type="text" placeholder="验证码" class="checkCode" id="checkCode" name="checkCode">
+                            <span class="validate"><img src="@Url.Action("getCode","CheckCode")" class="img_validate" id="img_validate" /><img src="~/Images/login/refresh.png" class="img_refresh" alt="刷新一下" title="刷新一下" onclick="refreshCode()" /></span>
+                        </p>
+
+                        <p><input type="submit" value="登&nbsp;&nbsp;&nbsp;录" class="btnLogin"></p>
+
+                    </form>
+                }
+            </div>
+          <div class="login_r">
+                    <p>还没有登录帐号？</p>
+                    <p><a href="@Url.Content("~/Register/Register")">立即注册</a></p>
+                    <p class="lg">可使用以下帐号直接登录:</p>
+                    <div>
+                        <a href=""><img src="~/Images/login/qq.png" /></a>
+                        <a href=""><img src="~/Images/login/wx.png" /></a>
+                        <a href=""><img src="~/Images/login/wb.png" /></a>
+
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        $(function () {
+            //当动态改变浏览器窗口是  也要水平居中
+            change();
+
+            function change() {
+                var _top = ($(window).height() - $("#loginBox").height()) / 2;
+                var _left = ($(window).width() - $("#loginBox").width()) / 2;
+                $("#loginBox").css({ top: _top, left: _left });
+            }
+
+        });
+        //点击刷新验证码
+        function refreshCode() {
+            var verify = document.getElementById('img_validate');
+            verify.setAttribute('src', '@Url.Content("/CheckCode/GetCode?")' + Math.random());
+        }
+
+    </script>
+
+    @* 缩放 居中 拖动 *@
+    @*<script>
+            window.onload = function(){
+                init(document.getElementById("loginTitle"));//记得初始化
+            };
+
+            var l = 0,t=0,x=0,y=0;
+            var isOver = false;
+            var zindex = 3;
+            function init(titleDom){
+                //tm_center(divObj);//居中事件
+                /*第一种*/
+                var thisDom = titleDom;//获取当前title对象
+                var parentDom = thisDom.parentNode;//获取当前title对应的div
+                titleDom.onmousedown = function(event){//1111开始
+                    var e = event || window.event;//为了兼容ie和火狐
+                    x = e.clientX;//鼠标所在的x坐标
+                    y = e.clientY;//鼠标所在的y坐标
+
+                    l = parseInt(parentDom.offsetLeft);//距离浏览器左边的位置left
+                    t = parseInt(parentDom.offsetTop);//距离浏览器顶部的位置top
+                    isOver = true;//定义拖动标识,防止卡顿
+                    zindex++;
+                    parentDom.style.zIndex = zindex;
+                    document.onmousemove = function(event){
+                        if(isOver){
+                            var e = event || window.event;//为了兼容ie和火狐
+                            var newLeft = l + e.clientX - x;//新的左边距
+                            var newTop = t + e.clientY - y;//新的顶部边距
+                            parentDom.style.left = newLeft+"px";
+                            parentDom.style.top = newTop+"px";
+                        }
+
+                    }; //鼠标移动的事件
+                    document.onmouseup = function(event){
+                        if(isOver){
+                            isOver = false;//还原标识
+                        }
+                    };//鼠标松开的事件
+
+                };///111结束
+            };
+
+        </script>*@
+</body>
+</html>

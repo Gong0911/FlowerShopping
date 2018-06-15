@@ -1,0 +1,126 @@
+﻿/*登录样式*/
+body{
+    background:url("../Images/login/bg.jpg") no-repeat;
+    background-size:100%;
+}
+
+#loginBox{
+    width: 640px;
+    height:400px;
+    background:#F9DDE3;
+    position:absolute;
+    top:100px;
+    left:400px;
+    opacity:0.9;
+}
+#loginBox .loginTitle{
+    width: 640px;
+    height:45px;
+     background:#ff3366;
+    color: #FFFFFF;
+    font-family: 微软雅黑;
+    line-height: 45px;
+    text-indent: 26px;
+    cursor: pointer;
+}
+
+
+/*登录内容*/
+#loginBox .login{
+     width: 600px;
+     height: 300px;
+     padding:20px;
+}
+
+#loginBox .login .login_l{
+            width: 310px;
+            height:270px;        
+            float: left;
+        }
+#loginBox .login .login_r{
+            width: 210px;
+            height: 270px;
+            float:right;
+        }
+#loginBox .login .login_l p.abc{
+            width:55px;
+            height:40px;
+            line-height:40px;
+            font-family:微软雅黑;
+            font-size :14px;    
+            float:left;
+            color:#666;
+        }
+#loginBox .login .login_l p.row span img.img_validate{
+            width:70px;
+            height:30px;
+            padding-top:4px;
+        }
+#loginBox .login .login_l p.row span img.img_refresh{
+            padding-top:7px;
+            padding-left:7px;
+          
+        }
+#loginBox .login .login_l input{
+            width: 250px;
+            height: 40px;
+            background: #FFFFFF;
+            border:0;
+            margin-bottom: 20px;
+            text-indent: 5px;
+            color: #666;
+            font-family: 微软雅黑;
+            font-size: 14px;
+        }
+#loginBox .login .login_l input.checkCode{
+            width: 100px;
+            height: 40px;
+            border:none;
+        }
+#loginBox .login .login_l input.btnLogin{
+            width: 160px;
+            height: 45px;
+         
+             background:#ff3366;
+            border:none;
+            color: #FFFFFF;
+            font-size: 16px;
+            text-align: center;
+            font-family: 微软雅黑;
+ }
+#loginBox .login .login_l input.btnLogin:hover{
+    background:#ff3366;
+    opacity:0.8;
+}
+
+#loginBox .login .login_r{
+            width:230px;
+            padding-left:20px;
+            height:270px;
+            float:right;
+            border-left:1px dashed #999;
+        }
+#loginBox .login .login_r p{
+            font-size:16px;
+            color:#666;
+            line-height:35px;
+            font-family: 微软雅黑;
+
+        }
+
+#loginBox .login .login_r p a{
+            color:#ff3366;
+            text-decoration:none;
+            font-family: 微软雅黑;
+        }
+#loginBox .login .login_r p a:hover{
+            text-decoration:underline;
+        }
+#loginBox .login .login_r p.lg{
+            padding-top:50px;
+            padding-bottom:20px;
+            font-family: 微软雅黑;
+        }
+#loginBox .login .login_r div img{
+            margin:0 6px;
+        }

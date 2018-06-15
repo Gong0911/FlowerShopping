@@ -1,0 +1,117 @@
+﻿
+@model FlowerShopping.ModelView.CartViewModel
+
+@*@model IEnumerable<FlowerShopping.Models.Cart>*@
+
+@{
+    ViewBag.Title = "Flowers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/Cart.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+    <div id="CartBox"> 
+        <div class="CartTitle">
+           <p>购物车</p>
+        </div>
+        <div class="CartDetail">
+          @using (Html.BeginForm("", "", FormMethod.Post))
+          {
+            <table class="aa" cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th width="10%">
+                            <label><input type="checkbox" class="check_all" />全选</label>
+                        </th>
+                        <th width="25%">商品信息</th>
+                        <th width="15%">单价</th>
+                        <th width="20%">数量</th>
+                        <th width="15%">小计</th>
+                        <th width="15%">操作</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var p in Model.allCart)
+                {
+
+                        <tr>
+                            <td>
+                                <label><input type="checkbox" /></label>
+                            </td>
+                            <td class="pro_info">
+                                <div class="pro_img">
+                                    <img src="@p.ProductID" width="160" height="70" />
+                                </div>
+                                <div class="pro_name">
+                                    <a href="">@p.UserID</a>
+                                </div>
+                            </td>
+                            <td class="pro_price">￥@p.UnitPrice</td>
+                            <td class="pro_num">
+                                <div class="num_area">
+                                    <div class="numSub"><img src="~/Images/detail/subImg.png"></div>
+                                    <form><input class="input_num" value="@p.Quantity" type="text" name="number"></form>
+                                    <div class="numAdd"><img src="~/Images/detail/addImg.png"></div>
+                                </div>
+                            </td>
+                            <td class="pro_price">￥@p.TotalPrice</td>
+                            <td class="pro_delete">@Html.ActionLink("删除", "Remove", new { }, new { onclick = "return confirm('确认删除吗？')" })</td>
+
+                        </tr>
+                        @*@Html.Hidden("danjia", @p.Product.ProductPrice)
+                        @Html.Hidden("goodsid", @p.ProductID)*@
+                    }
+
+
+                </tbody>
+            </table>
+            <div class="continue">
+                <div class="delete_box">
+                    <label><input type="checkbox" />全选</label>
+                </div>
+                <div class="delete_link">
+                    @Html.ActionLink("全部删除", "RemoveAll", new { }, new { onclick = "return confirm('确认删除吗？')" })
+                </div>
+
+                <div class="pay_box">
+                    <div class="pay_btn">
+                        <input type="submit" id="payBtn" value="结算" class="paybtn" onclick="return confirm('确认结算吗？')" />
+                    </div>
+                    <div class="pay_price">
+                        合计:<span>￥0.00</span>
+                    </div>
+                    <div class="pay_num"></div>
+                </div>
+            </div>
+          }
+        </div>
+    </div>
+
+
+<script>
+    //数量点击增加 减少
+    $(function () {
+
+        $(".numAdd").click(function () {
+            var value = parseInt($(".input_num").val()) + 1;
+            $(".input_num").val(value);
+        });
+
+        $(".numSub").click(function () {
+            var num = $(".input_num").val()
+            if (num > 1) {
+                $(".input_num").val(num - 1);
+            }
+        });
+    });
+</script>
+</body>
+</html>

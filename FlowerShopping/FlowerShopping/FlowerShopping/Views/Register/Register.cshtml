@@ -1,0 +1,158 @@
+﻿@model FlowerShopping.Models.UserInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>用户注册</title>
+    @Styles.Render("~/Content/reset.css")
+    @Styles.Render("~/Content/register.css")
+    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
+
+</head>
+<body>
+    <div id="regBox">
+        <div class="regTitle" id="loginTitle">用户注册</div>
+        <div class="reg">
+            <div class="reg_l">
+                @using (Html.BeginForm("Register", "Register", FormMethod.Post, new { enctype = "multipart/form-data", id = "regbox" }))//一定要指定enctype表明二进制
+                {
+                    @Html.AntiForgeryToken()
+                    <form>
+                        <p class="abc">账号</p>
+                        <p class="row">
+                            @*<input type="text" placeholder="请输入登录账号" class="reg_user">*@
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "reg_user", placeholder = "请输入登录账号", id = "txtusername"})
+                            <span class="tip user_tip"></span>
+
+                        </p>
+                        <p class="abc">密码</p>
+                        <p class="row">
+                            @*<input type="text" placeholder="请输入6-16位密码" class="reg_password">*@
+                            @Html.TextBoxFor(m => m.UserPwd, new { @class = "reg_password", placeholder = "请输入6-16位密码", id = "txtpassword", type = "password" })
+                            <span class="tip password_tip"></span>
+                            <span class="tip_message">@Html.ValidationMessageFor(m => m.UserPwd)</span>
+                        </p>
+                        <p class="abc">确认密码</p>
+                        <p class="row">
+                            @*<input type="text" placeholder="请再次输入密码" class="reg_confirm">*@
+                            @Html.TextBoxFor(m => m.ComfirmPwd, new { @class = "reg_confirm", placeholder = "请再次输入密码", id = "txtconfirmpwd", type = "password" })
+                            <span class="tip confirm_tip"></span>
+                            <span class="tip_message">@Html.ValidationMessageFor(m => m.ComfirmPwd)</span>
+                        </p>
+
+                        <p class="abc">手机号</p>
+                        <p class="row">
+                            @*<input type="text" placeholder="请输入手机号" class="reg_phone">*@
+                            @Html.TextBoxFor(m => m.UserPhone, new { @class = "reg_phone", placeholder = "请输入手机号", id = "txttelphone" })
+                            <span class="tip phone_tip"></span>
+                        </p>
+                        <p class="abc">头像</p>
+                        <p class="row">
+
+                            @Html.TextBoxFor(model => model.UeserImg, new { @class = "txtfile", placeholder = "添加头像", id = "filename", disabled = "disabled" })
+                            <span class="linkImg"></span>
+                            <input type="file" name="file" class="loadFile" title="上传头像" onchange="document.getElementById('filename').value = this.value">@*注意一定要指明name属性否则会上传失败*@
+
+                        </p>
+                        <p><input type="submit" value="注&nbsp;&nbsp;&nbsp;册" class="btnReg" id="registerBtn"></p>
+
+                    </form>
+                }
+            </div>
+            <div class="reg_r">
+                <p>已有登录帐号？</p>
+                <p><a href="@Url.Content("~/Register/Login")">前往登录</a></p>
+                <p class="lg">可使用以下帐号直接登录:</p>
+                <div>
+                    <a href=""><img src="~/Images/login/qq.png" /></a>
+                    <a href=""><img src="~/Images/login/wx.png" /></a>
+                    <a href=""><img src="~/Images/login/wb.png" /></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @* 表单验证 *@
+    <script type="text/javascript">
+
+        var user_Boolean = false;
+        var password_Boolean = false;
+        var confirm_Boolean = false;
+        var email_Boolean = false;
+        var Mobile_Boolean = false;
+
+        $(function () {
+
+            // user
+            $('.reg_user').blur(function () {
+                //如果用户名为空
+                if(($('.reg_user').val()=='')){
+                    $('.user_tip').html("✘").css("color", "red");
+                    user_Boolean = false;
+                }
+                else{
+                    $('.user_tip').html("✔").css("color", "#23af32");
+                    user_Boolean = true;
+                }
+            });
+            // password
+            $('.reg_password').blur(function () {
+                if ((/^[a-z0-9_-]{6,16}$/).test($(".reg_password").val())) {
+                    $('.password_tip').html("✔").css("color", "#23af32");
+                    password_Boolean = true;
+                } else {
+                    $('.password_tip').html("✘").css("color", "red");
+                    password_Boolean = false;
+                }
+            });
+
+
+            // password_confirm
+            $('.reg_confirm').blur(function () {
+                if (($(".reg_password").val()) == ($(".reg_confirm").val()) && ((/^[a-z0-9_-]{6,16}$/).test($(".reg_password").val()))) {
+                    $('.confirm_tip').html("✔").css("color", "#23af32");
+                    confirm_Boolean = true;
+                } else {
+                    $('.confirm_tip').html("✘").css("color", "red");
+                    confirm_Boolean = false;
+                }
+            });
+
+            // Mobile
+            $('.reg_phone').blur(function () {
+                if ((/^1[34578]\d{9}$/).test($(".reg_phone").val())) {
+                    $('.phone_tip').html("✔").css("color", "#23af32");
+                    Mobile_Boolean = true;
+                } else {
+                    $('.phone_tip').html("✘").css("color", "red");
+                    Mobile_Boolean = false;
+                }
+            });
+
+        });
+
+
+    </script>
+    @* 保持注册界面在不同的屏幕上显示保持居中 *@
+    <script type="text/javascript">
+        $(function () {
+            change();
+
+            function change() {
+                var _top = ($(window).height() - $("#regBox").height()) / 2;
+                var _left = ($(window).width() - $("#regBox").width()) / 2;
+                $("#regBox").css({ top: _top, left: _left });
+            }
+        });
+
+    </script>
+</body>
+</html>

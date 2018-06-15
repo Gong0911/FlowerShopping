@@ -1,0 +1,239 @@
+﻿/*轮播图*/
+#banner{
+    width:100%;
+    height:400px;
+    margin-top:26px;
+    position:relative;
+    z-index:-100;
+}
+#banner .Con{
+    width:100%; 
+    height:400px;
+    position:relative;}
+#banner .Con .box{
+    width:100%;
+    height:400px;
+    position:absolute;
+    left:0px; 
+    top:0px;
+
+}
+#banner ul.button{
+    width:110px;
+    height:30px;
+    position:absolute; 
+    left:49%; 
+    bottom:0px;
+    z-index:5555;
+
+}
+#banner ul.button li{
+    width:13px; 
+    height:13px;
+    float:left;
+    margin:0px 5px;
+	background:url("../Images/banner/dot.png") -13px 0px;}
+#banner ul.button li.hover{
+    background:url("../Images/banner/dot.png") 0px 0px;
+}
+
+
+/*中间内容*/
+#mainBox{
+    width:1200px;
+    /*background:#f8c175;*/
+    margin:20px auto;
+}
+
+/*新品上架*/
+#mainBox .newBox{
+    width:1200px;
+    height:430px;
+    /*background:#fbc6c6;*/
+}
+#mainBox .newBox .new_list{
+    width:1200px;
+    height:350px;
+    /*background:#baf6a3;*/
+}
+#mainBox .newBox .new_list ul li{
+    width:230px;
+    height:330px;
+    /*background:#f6c282;*/
+    border:1px solid #ccc;
+    float:left;
+    margin:5px 4px 0 4px;
+}
+
+#mainBox .newBox .new_list ul li img{
+    width:230px;
+    height:260px;
+}
+#mainBox .newBox .new_list ul li p.list_name{
+    width:230px;
+    height:35px;
+    line-height:35px;
+    text-align:center;
+    font-size:16px;
+}
+#mainBox .newBox .new_list ul li p.list_name a{
+    color:#000;
+    font-size:16px;
+    font-family:微软雅黑;
+    cursor:pointer;
+}
+#mainBox .newBox .new_list ul li p.list_name a:hover{
+    color:#ff3366;
+    cursor:pointer;
+}
+#mainBox .newBox .new_list ul li p.list_price{
+    width:240px;
+    height:35px;
+    text-align:center;
+    line-height:35px;
+    color:#ff3366;
+    font-family:微软雅黑;
+    font-weight:bold;
+    font-size:14px;
+}
+/*热销单品*/
+#mainBox .hotBox{
+    width:1200px;
+    height:890px;
+    /*background:#d8f2ee;*/
+}
+#mainBox .hotBox .hot_title,.newBox .new_title,.typeBox .type_title{
+    width:1200px;
+    height:60px;
+    background:url("../Images/home/huabian.jpg") no-repeat center;
+    text-align: center;
+    line-height:60px;
+}
+#mainBox .hotBox .hot_title h3,.newBox .new_title h3,.typeBox .type_title h3{
+    color:#000;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight:500;
+    font-size:22px;
+}
+
+#mainBox .hotBox .hot_list{
+    width:1200px;
+    height:400px;  
+}
+#mainBox .hotBox .hot_list ul li{
+    width:275px;
+    height:380px;
+    /*background:#eee86d;*/
+    border:1px solid #ccc;
+    float:left;
+    margin:15px 7px 5px 15px;
+  
+}
+#mainBox .hotBox .hot_list ul li img{
+    width:275px;
+    height:310px;  
+}
+#mainBox .hotBox .hot_list ul li p.list_name{
+    width:275px;
+    height:35px;
+    text-align:center;
+    line-height:35px;
+    font-size:18px;
+    font-family:微软雅黑;
+}
+
+#mainBox .hotBox .hot_list ul li p.list_name a{
+    color:#000;
+    font-size:18px;
+    font-family:微软雅黑;
+    cursor:pointer;
+}
+#mainBox .hotBox .hot_list ul li p.list_name a:hover{
+    color:#ff3366;
+    cursor:pointer;
+}
+#mainBox .hotBox .hot_list ul li p.list_price{
+    width:275px;
+    height:35px;
+    color:#ff3366;
+    text-align:center;
+    line-height:35px;
+    font-family:微软雅黑;
+    font-weight:bold;
+    font-size:16px;
+}
+
+/*鲜花花材*/
+#mainBox .typeBox .type_list{
+    width:1200px;
+    height:350px;
+    border-bottom:1px dashed #ccc;
+    position:relative;
+    
+}
+#mainBox .typeBox .type_list img.img_l{
+            float: left;
+            position: absolute;
+            top: 130px;
+            left: 0;
+        }
+#mainBox .typeBox .type_list img.img_r{
+            float: right;
+            position: absolute;
+            top: 130px;
+            right: 0;
+        }
+#mainBox .typeBox .type_list .scroll{
+            width:1080px;
+            height: 360px;
+            margin: 20px auto;
+            overflow: hidden;
+            position: relative;
+        }
+#mainBox .typeBox .type_list .scroll .imgList{
+            width: 1520px;
+            height:270px;
+            position:absolute;
+            top:45px;
+            left:0;
+        }
+#mainBox .typeBox .type_list .scroll .imgList dl{
+            width: 200px;
+            height:270px;
+            float: left;
+            margin: 0 8px;
+        }
+#mainBox .typeBox .type_list .scroll .imgList dl dt{
+            width: 200px;
+            height: 200px;
+            border:1px dashed #ccc;
+             border-radius:50%;
+        }
+#mainBox .typeBox .type_list .scroll .imgList dl dt img{
+     width: 200px;
+     height: 200px;
+     border-radius:50%;
+     transition: all 3s;
+}
+#mainBox .typeBox .type_list .scroll .imgList dl dt img:hover{
+    transform: rotate(360deg) scale(0.8);
+}
+#mainBox .typeBox .type_list .scroll .imgList dl dd{
+            width: 200px;
+            height: 60px;
+            font-size: 18px;
+            text-align: center;
+            line-height: 60px;
+            font-family:微软雅黑;
+        }
+
+
+/*鼠标移入添加样式*/
+#mainBox .hotBox .hot_list ul li.hover{
+    width:275px;
+    height:378px;
+    border:2px solid #ff3366;
+}
+#mainBox .newBox .new_list ul li.active{
+    box-shadow:5px 5px 10px #ccc;
+}

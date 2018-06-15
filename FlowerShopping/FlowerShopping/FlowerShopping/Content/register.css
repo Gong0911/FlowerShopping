@@ -1,0 +1,154 @@
+﻿body {
+    background:url("../Images/login/bg.jpg") no-repeat;
+    background-size:100%;
+}
+/*注册样式*/
+#regBox{
+    width: 640px;
+    height:450px;
+    background:#F9DDE3;
+    position:absolute;
+    top:150px;
+    left:400px;
+    opacity:0.9;
+}
+#regBox .regTitle{
+    width: 640px;
+    height:45px;
+    background:#ff3366;
+    color: #FFFFFF;
+    font-family: 微软雅黑;
+    line-height: 45px;
+    text-indent: 26px;
+    cursor: pointer;
+}
+
+
+
+/*注册内容*/ 
+#regBox .reg{
+     width: 600px;
+     height: 400px;
+     padding: 20px;
+     /*background:green;*/
+}
+#regBox .reg .reg_l{
+    position:relative;
+     width: 340px;
+     height:360px;        
+     float: left;
+}
+
+#regBox .reg .reg_l p.abc{
+     width:65px;
+     height:40px;
+     line-height:40px;
+     font-family:微软雅黑;
+     font-size :14px;    
+     float:left;
+     color:#666;
+}
+#regBox .reg .reg_l p.row span.tip{
+    display:block;
+    width:25px;
+    height:25px;
+    margin-top:7px;
+    float:right;
+   
+}
+
+#regBox .reg .reg_l input{
+    width: 240px;
+    height: 40px;
+    background:#ffffff;
+    border:0;
+    margin-bottom: 20px;
+    text-indent: 5px;
+    color: #666;
+    font-family: 微软雅黑;
+    font-size: 14px;
+}
+/*上传头像*/
+#regBox .reg .reg_l input.txtfile{
+    width:180px;
+    height:40px;
+
+}
+#regBox .reg .reg_l input.loadFile{
+    width:40px;
+    height:40px;
+    overflow:hidden;
+    float:right;
+    margin-right:45px;
+    opacity:0;
+    
+}
+#regBox .reg .reg_l span.linkImg{
+    position:absolute;
+    top:0;
+    right:44px;
+    display:block;
+    width:40px;
+    height:40px;
+    background:url("../Images/login/upload.png");
+}
+#regBox .reg .reg_l input.btnReg{
+    width: 160px;
+    height: 45px;
+    background:#ff3366;
+    border:none;
+    color: #FFFFFF;
+    font-size: 16px;
+    text-align: center;
+    font-family: 微软雅黑;
+}
+#regBox .reg .reg_l input.btnReg:hover{
+    background:#ff3366;
+    opacity:0.8;
+}
+
+/*验证信息样式*/
+#regBox .reg .reg_l p.row{
+    position:relative;
+}
+#regBox .reg .reg_l span.tip_message{
+    position:absolute;
+    top:40px;
+    left:65px;
+    color:red;
+    font-size:12px;
+    width:240px;
+   
+}
+
+/*右边*/
+#regBox .reg .reg_r{
+     width:250px;    
+     height:310px;
+     float:right; 
+     border-left:1px dashed #999;
+}
+#regBox .reg .reg_r p{
+     font-size:16px;
+     color:#666;
+     line-height:35px;
+     font-family: 微软雅黑;
+     padding-left:20px;
+}
+#regBox .reg .reg_r p a{
+            /*color:#00a57f;*/
+     color:#ff3366;
+     text-decoration:none;
+     font-family: 微软雅黑;
+}
+#regBox .reg .reg_r p a:hover{
+     text-decoration:underline;
+}
+#regBox .reg .reg_r p.lg{
+     padding-top:50px;
+     padding-bottom:20px;
+     font-family: 微软雅黑;
+}
+#regBox .reg .reg_r div img{
+     margin-left:13px;
+}
